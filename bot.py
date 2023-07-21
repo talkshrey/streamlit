@@ -1,11 +1,12 @@
 import openai
 import streamlit as st
 from streamlit_chat import message
+import os
 
 st.set_page_config(page_title="FinBot", page_icon=":robot_face:")
 st.markdown("<h1 style='text-align: center;'>FinBot - Financial chat bot</h1>", unsafe_allow_html=True)
 
-openai.api_key = "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"
+openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 # Initialise session state variables
 if 'generated' not in st.session_state:
