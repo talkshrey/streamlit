@@ -2,11 +2,14 @@ import openai
 import streamlit as st
 from streamlit_chat import message
 import os
+from dotenv import load_dotenv, find_dotenv
 
 st.set_page_config(page_title="FinBot", page_icon=":robot_face:")
 st.markdown("<h1 style='text-align: center;'>FinBot - Financial chat bot</h1>", unsafe_allow_html=True)
 
-openai.api_key = "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"
+load_dotenv(find_dotenv())
+print(os.getenv("OPENAI_API_KEY"))
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Initialise session state variables
 if 'generated' not in st.session_state:
@@ -42,8 +45,7 @@ counter_placeholder.write(f"Total cost of this conversation: ${st.session_state[
 clear_button = st.sidebar.button("Clear Conversation", key="clear")
 
 # Map model names to OpenAI model IDs
-if model_name == "GPT-3.5":
-    model = "gpt-3.5-turbo"
+model = "gpt-3.5-turbo"
 
 # reset everything
 if clear_button:
