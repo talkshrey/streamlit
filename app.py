@@ -8,7 +8,6 @@ st.set_page_config(page_title="FinBot", page_icon=":robot_face:")
 st.markdown("<h1 style='text-align: center;'>FinBot - Financial chat bot</h1>", unsafe_allow_html=True)
 
 load_dotenv(find_dotenv())
-print(os.getenv("OPENAI_API_KEY"))
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Initialise session state variables
@@ -104,7 +103,6 @@ with container:
         st.session_state['model_name'].append(model_name)
         st.session_state['total_tokens'].append(total_tokens)
 
-        # from https://openai.com/pricing#language-models
         if model_name == "GPT-3.5":
             cost = total_tokens * 0.002 / 1000
         else:
