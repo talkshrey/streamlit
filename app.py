@@ -2,12 +2,10 @@ import openai
 import streamlit as st
 from streamlit_chat import message
 import os
-from dotenv import load_dotenv, find_dotenv
 
 st.set_page_config(page_title="FinBot", page_icon=":robot_face:")
 st.markdown("<h1 style='text-align: center;'>FinBot - Financial chat bot</h1>", unsafe_allow_html=True)
 
-load_dotenv(find_dotenv())
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Initialise session state variables
